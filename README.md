@@ -1,7 +1,7 @@
 # spring-boot-starter-akka
-Based on spring-boot and akka integration
-1. The ActorSystem into spring's jurisdiction, can be injected automatically in the code Actorsystem
-2. Support automatic creation of Remote Actor
+Based on spring-boot and akka integration<br>
+1. The ActorSystem into spring's jurisdiction, can be injected automatically in the code Actorsystem<br>
+2. Support automatic creation of Remote Actor<br>
 
 how to use
 
