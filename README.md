@@ -24,6 +24,7 @@ Public class Application {
         Application.run (args);
     }}
 
+
 Package com.alibaba.akka;
 Import com.alibaba.boot.akka.ActorBean;
 Import akka.actor.UntypedActor;
