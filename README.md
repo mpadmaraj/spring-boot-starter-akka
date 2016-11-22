@@ -43,16 +43,18 @@ public class TestActor extends UntypedActor {
 
 }
 ```
-Start the container, you can use the autoconfig function of spring-boot, will automatically create ActorSystem and expose remote Actor (TestActor)
+Start the container, you can use the autoconfig function of spring-boot,
+will automatically create ActorSystem and expose remote Actor (TestActor)
 * How to connect to a remote Actor
 ```
         final ActorRef actor = system.actorOf(Props.create(PingLookupActor.class,
-                                                           "akka.tcp://ClientActorSystem@127.0.0.1:2552/user/ClientHandler"),
+                                    "akka.tcp://ClientActorSystem@127.0.0.1:2552/user/ClientHandler"),
                                               "PingLookupActor");
 
         TimeUnit.SECONDS.sleep(5);
         for (int i = 0; i < 1000000; i++) {
-            actor.tell(TaskProtos.Ping.newBuilder().setId(UUID.randomUUID().toString()).setNow(System.currentTimeMillis()).build(),
+            actor.tell(TaskProtos.Ping.newBuilder().setId(UUID.randomUUID().toString())
+                        .setNow(System.currentTimeMillis()).build(),
                        ActorRef.noSender());
         }
 
@@ -74,8 +76,8 @@ public class PingLookupActor extends UntypedActor {
     private void sendIdentifyRequest() {
         getContext().actorSelection(path).tell(new Identify(path), getSelf());
         getContext().system().scheduler().scheduleOnce(Duration.create(3, TimeUnit.SECONDS), getSelf(),
-                                                       ReceiveTimeout.getInstance(), getContext().dispatcher(),
-                                                       getSelf());
+                                               ReceiveTimeout.getInstance(), getContext().dispatcher(),
+                                               getSelf());
     }
 
     @Override
