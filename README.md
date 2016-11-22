@@ -45,6 +45,7 @@ public class TestActor extends UntypedActor {
 ```
 Start the container, you can use the autoconfig function of spring-boot, will automatically create ActorSystem and expose remote Actor (TestActor)
 * How to connect to a remote Actor
+```
         final ActorRef actor = system.actorOf(Props.create(PingLookupActor.class,
                                                            "akka.tcp://ClientActorSystem@127.0.0.1:2552/user/ClientHandler"),
                                               "PingLookupActor");
